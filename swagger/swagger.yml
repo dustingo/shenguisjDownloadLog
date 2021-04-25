@@ -1,0 +1,66 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /sj/:
+    get:
+      tags:
+      - sj
+      description: put the time
+      operationId: DownloadGameController.Get
+      parameters:
+      - in: query
+        name: date
+        description: The date you want to download
+        required: true
+        type: string
+      - in: query
+        name: user
+        description: The user you got from dou
+        required: true
+        type: string
+      - in: query
+        name: auth
+        description: The auth you got from dou
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{int} 200'
+        "403":
+          description: date is nil
+  /sj/download:
+    get:
+      tags:
+      - sj
+      description: download log file
+      operationId: DownloadGameController.DownloadFile
+      parameters:
+      - in: query
+        name: user
+        description: The user you got from dou
+        required: true
+        type: string
+      - in: query
+        name: auth
+        description: The auth you got from dou
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '[string] download ok'
+        "403":
+          description: file is not existed
+tags:
+- name: sj
+  description: |
+    Operations about dl
